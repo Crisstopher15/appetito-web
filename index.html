@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargar APPETITO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fondo animado con stickers sutiles -->
+  <div class="floating-bg" aria-hidden="true">
+    <span class="bubble b1">🍔</span>
+    <span class="bubble b2">🍕</span>
+    <span class="bubble b3">🍟</span>
+    <span class="bubble b4">🌮</span>
+    <span class="bubble b5">🍩</span>
+    <span class="bubble b6">🥑</span>
+    <span class="bubble b7">🍦</span>
+    <span class="bubble b8">🍗</span>
+  </div>
+
+  <!-- Contenedor principal responsive -->
+  <main class="download-container">
+    <div class="card">
+      
+      <!-- Logo oficial APPETITO con sus colores característicos -->
+      <div class="logo-wrapper">
+        <img src="logo-appetito.png" alt="Logo de APPETITO" class="app-logo">
+      </div>
+
+      <!-- Texto solicitado -->
+      <h1 class="main-title">
+        Descarga <span class="highlight">APPETITO</span> dando click aquí
+      </h1>
+
+      <!-- Botón de descarga -->
+      <a href="appetito.apk" download="appetito.apk" id="downloadBtn" class="download-btn" aria-label="Descargar APPETITO APK">
+        <span class="btn-content">
+          <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span class="btn-text">Descargar APK</span>
+        </span>
+      </a>
+
+      <!-- Mensaje de confirmación temporal -->
+      <p id="downloadFeedback" class="feedback-msg" aria-live="polite"></p>
+
+    </div>
+  </main>
+
+  <!-- Efecto de confeti en canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>

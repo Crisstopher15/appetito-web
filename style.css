@@ -1,0 +1,369 @@
+/* ========================================================
+   PALETA DE COLORES EXTRAÍDA DEL LOGO DE APPETITO:
+   - Menta / Aqua Pastel:     #AEE1D0  (Fondo característico del logo)
+   - Chocolate / Espresso:    #52291E  (Color oscuro y trazos del logo)
+   - Azul Bígaro / Celeste:   #79A1E2  (Acento azul del logo)
+   - Azul Profundo:           #4871BC  (Detalles y sombras del logo)
+   - Lavanda Suave / Nube:    #E6E7F6  (Luz y fondos secundarios)
+   ======================================================== */
+
+:root {
+  --logo-mint: #AEE1D0;
+  --logo-mint-light: #C8EFE2;
+  --logo-mint-dark: #86CBB3;
+  --logo-chocolate: #52291E;
+  --logo-chocolate-hover: #3A1B14;
+  --logo-blue: #79A1E2;
+  --logo-blue-deep: #4871BC;
+  --logo-lavender: #E6E7F6;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --shadow-color: rgba(82, 41, 30, 0.15);
+  --font-fun: 'Fredoka', cursive, sans-serif;
+  --font-text: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-text);
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 1.2rem;
+  position: relative;
+  background: linear-gradient(135deg, var(--logo-mint) 0%, var(--logo-mint-light) 35%, var(--logo-lavender) 70%, var(--logo-mint) 100%);
+  background-size: 300% 300%;
+  animation: bgFlow 16s ease infinite;
+}
+
+@keyframes bgFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========================================================
+   ELEMENTOS FLOTANTES DE FONDO
+   ======================================================== */
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bubble {
+  position: absolute;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  opacity: 0.7;
+  filter: drop-shadow(0 8px 14px rgba(82, 41, 30, 0.12));
+  user-select: none;
+  animation: floatUpward 14s infinite linear;
+}
+
+.b1 { left: 8%; animation-duration: 13s; animation-delay: 0s; }
+.b2 { left: 24%; animation-duration: 16s; animation-delay: 2.5s; font-size: 2.5rem; }
+.b3 { left: 40%; animation-duration: 12s; animation-delay: 4.5s; }
+.b4 { left: 58%; animation-duration: 15s; animation-delay: 1s; font-size: 2.7rem; }
+.b5 { left: 74%; animation-duration: 14s; animation-delay: 3s; }
+.b6 { left: 88%; animation-duration: 17s; animation-delay: 0.5s; font-size: 2.8rem; }
+.b7 { left: 16%; animation-duration: 18s; animation-delay: 6s; }
+.b8 { left: 66%; animation-duration: 13s; animation-delay: 7s; }
+
+@keyframes floatUpward {
+  0% {
+    transform: translateY(110vh) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* ========================================================
+   CONTENEDOR Y TARJETA RESPONSIVE
+   ======================================================== */
+.download-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 540px;
+  margin: auto;
+}
+
+.card {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: clamp(24px, 5vw, 36px);
+  padding: clamp(2rem, 5vw, 3.2rem) clamp(1.4rem, 4vw, 2.5rem);
+  box-shadow: 
+    0 24px 48px -12px var(--shadow-color),
+    0 0 0 2px rgba(174, 225, 208, 0.45) inset,
+    0 8px 24px rgba(82, 41, 30, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.4rem, 3.5vw, 2rem);
+  animation: cardEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 28px 56px -12px rgba(82, 41, 30, 0.22),
+    0 0 0 2px rgba(174, 225, 208, 0.65) inset;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ========================================================
+   LOGO APPETITO
+   ======================================================== */
+.logo-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-logo {
+  max-width: clamp(160px, 38vw, 220px);
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  object-fit: contain;
+  box-shadow: 
+    0 10px 24px rgba(82, 41, 30, 0.12),
+    0 0 0 3px rgba(255, 255, 255, 0.85);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 
+    0 14px 30px rgba(82, 41, 30, 0.18),
+    0 0 0 4px #ffffff;
+}
+
+/* ========================================================
+   TÍTULO PRINCIPAL (COLORES DEL LOGO)
+   ======================================================== */
+.main-title {
+  font-family: var(--font-fun);
+  font-size: clamp(1.45rem, 3.6vw, 2.15rem);
+  font-weight: 700;
+  color: var(--logo-chocolate);
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  max-width: 440px;
+}
+
+.highlight {
+  display: inline-block;
+  color: var(--logo-blue-deep);
+  position: relative;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(72, 113, 188, 0.2);
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--logo-mint-dark);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* ========================================================
+   BOTÓN DE DESCARGA RESPONSIVE (AZUL & MENTA DEL LOGO)
+   ======================================================== */
+.download-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  min-height: 56px;
+  padding: 0.95rem 2.2rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  font-family: var(--font-fun);
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--logo-blue) 0%, var(--logo-blue-deep) 100%);
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: 
+    0 10px 24px rgba(72, 113, 188, 0.38),
+    0 3px 8px rgba(82, 41, 30, 0.12),
+    0 -3px 0 rgba(0, 0, 0, 0.18) inset;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: pulseGlow 3s infinite ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.download-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: linear-gradient(135deg, #89aef0 0%, #3e65ad 100%);
+  box-shadow: 
+    0 16px 34px rgba(72, 113, 188, 0.48),
+    0 6px 14px rgba(82, 41, 30, 0.16),
+    0 -2px 0 rgba(0, 0, 0, 0.22) inset;
+}
+
+.download-btn:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 
+    0 5px 12px rgba(72, 113, 188, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 
+      0 10px 24px rgba(72, 113, 188, 0.38),
+      0 0 0 0 rgba(121, 161, 226, 0.45);
+  }
+  50% {
+    box-shadow: 
+      0 12px 28px rgba(72, 113, 188, 0.48),
+      0 0 0 14px rgba(121, 161, 226, 0);
+  }
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.icon-download {
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.download-btn:hover .icon-download {
+  animation: arrowBounce 0.7s infinite alternate ease-in-out;
+}
+
+@keyframes arrowBounce {
+  from { transform: translateY(-1px); }
+  to { transform: translateY(4px); }
+}
+
+.btn-text {
+  letter-spacing: 0.3px;
+}
+
+/* ========================================================
+   FEEDBACK TEMPORAL TRAS CLIC
+   ======================================================== */
+.feedback-msg {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--logo-blue-deep);
+  min-height: 1.2rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+}
+
+.feedback-msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================
+   CANVAS DE CONFETI
+   ======================================================== */
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ========================================================
+   MEDIA QUERIES (RESPONSIVE)
+   ======================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem 0.8rem;
+  }
+
+  .card {
+    padding: 1.8rem 1.1rem;
+    border-radius: 24px;
+    gap: 1.3rem;
+  }
+
+  .app-logo {
+    max-width: 165px;
+    border-radius: 18px;
+  }
+
+  .main-title {
+    font-size: 1.35rem;
+    padding: 0 0.2rem;
+  }
+
+  .download-btn {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.9rem 1.4rem;
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .download-container {
+    max-width: 580px;
+  }
+}
